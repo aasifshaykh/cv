@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aasifhusain Shaikh - Resume</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 0.5in; /* Standard A4 print margin */
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            font-size: 10.5pt;
+            line-height: 1.4;
+            color: #2d3748;
+            margin: 0;
+            padding: 10px 20px 20px 20px; /* Reduced top padding for body */
+            background: #f7fafc;
+        }
+
+        #resume-container {
+            /* This div is useful if you want a background behind the #resume div */
+        }
+
+        #resume {
+            max-width: 8.5in;
+            margin: 10px auto 20px auto; /* Reduced top margin */
+            padding: 1in 0.75in; /* Padding inside the resume content area */
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+        }
+
+        .fab-container { /* Container for multiple FABs */
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            display: flex;
+            flex-direction: column; /* Stack buttons vertically */
+            gap: 15px; /* Space between buttons */
+            z-index: 1000;
+        }
+
+        .fab {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #2b6cb0;
+            color: white;
+            font-size: 26px; /* Adjusted for potentially longer icons */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(43, 108, 176, 0.4);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-decoration: none; /* Remove underline if FAB is an <a> tag */
+        }
+        .fab:hover {
+            background-color: #2c5282;
+            transform: translateY(-2px);
+        }
+        /* Specific styling for download icon if using text/emoji */
+        .fab-download::before {
+            content: '📄'; /* Simple document emoji for download */
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #2b6cb0;
+            padding-bottom: 20px;
+        }
+        /* Remove top border from the first .header div if it's the empty one */
+        .header:first-child {
+            border-bottom: none;
+            margin-bottom: 0; /* Remove margin if it's just a spacer */
+            padding-bottom: 0;
+        }
+        /* Ensure the actual content header has its styles */
+        .header + .header {
+             /* Styles for the second header are already defined */
+        }
+
+
+        .name {
+            font-size: 26pt;
+            font-weight: 400; /* Default weight for the first name part */
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            color: #1a202c;
+        }
+        .name .name-first {
+            font-weight: 400; /* Explicitly normal weight */
+        }
+        .name .name-last {
+            font-weight: 700; /* Bold */
+            color: #1c3d5a; /* Dark Slate Blue - Updated color for Shaikh */
+        }
+
+
+        .title {
+            font-size: 13pt;
+            font-weight: 600;
+            color: #4a5568;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .contact-info {
+            font-size: 9.5pt;
+            margin-bottom: 12px;
+            color: #4a5568;
+            line-height: 1.8; /* Increased line height for better spacing of contact details with icons */
+        }
+        .contact-info a {
+            color: #2b6cb0;
+            text-decoration: none;
+            vertical-align: middle; /* Align link text with icons */
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+            color: #2c5282;
+        }
+        .contact-info .contact-item { /* For better alignment if needed */
+            display: inline-block;
+            margin-right: 12px; /* Increased spacing between contact items */
+            line-height: 1.5; /* Ensure items on same line are spaced okay */
+        }
+         .contact-info .contact-item:last-child {
+            margin-right: 0;
+        }
+        .contact-icon {
+            width: 2em; /* Consistent icon size */
+            height: 2em; /* Consistent icon size */
+            display: inline-block;
+            vertical-align: middle; /* Align icons with text */
+            margin-right: 4px; /* Space between icon and text */
+        }
+
+
+        .quote {
+            font-style: italic;
+            font-size: 10.5pt;
+            color: #718096;
+            margin-top: 10px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 16pt;
+            font-weight: 700;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #cbd5e0;
+            padding-bottom: 8px;
+            color: #2b6cb0;
+        }
+
+        .job {
+            margin-bottom: 20px;
+            padding-left: 10px;
+            border-left: 3px solid #a0aec0;
+            padding-bottom: 10px;
+        }
+        .job:last-child {
+            margin-bottom: 0;
+        }
+
+
+        .company {
+            font-size: 11.5pt;
+            font-weight: 600;
+            margin-bottom: 3px;
+            color: #2d3748;
+        }
+
+        .job-title {
+            font-size: 10.5pt;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #4a5568;
+        }
+
+        .job-duration {
+            font-size: 9.5pt;
+            color: #718096;
+            float: right;
+        }
+
+        .job-description {
+            margin-top: 8px;
+            font-size: 10pt;
+            color: #4a5568;
+        }
+
+        .job-description ul {
+            margin: 8px 0;
+            padding-left: 20px;
+            list-style-type: disc;
+        }
+
+        .job-description li {
+            margin-bottom: 5px;
+            line-height: 1.5;
+        }
+
+        .education-item {
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 3px solid #a0aec0;
+            padding-bottom: 5px;
+        }
+         .education-item:last-child {
+            margin-bottom: 0;
+        }
+
+
+        .degree {
+            font-weight: 600;
+            font-size: 10.5pt;
+            color: #2d3748;
+        }
+
+        .institution {
+            font-size: 10.5pt;
+            margin-bottom: 3px;
+            color: #4a5568;
+        }
+
+        .education-duration {
+            font-size: 9.5pt;
+            color: #718096;
+            float: right;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            margin-bottom: 10px;
+            background-color: #edf2f7;
+            padding: 12px;
+            border-radius: 6px;
+        }
+
+        .skill-category-title {
+            font-weight: 600;
+            font-size: 10pt;
+            margin-bottom: 5px;
+            color: #2b6cb0;
+        }
+
+        .skill-list {
+            font-size: 9.5pt;
+            line-height: 1.5;
+            color: #4a5568;
+        }
+
+        .projects {
+            margin-bottom: 15px;
+        }
+
+        .project {
+            margin-bottom: 18px;
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            background-color: #f8fafc;
+        }
+        .project:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-title {
+            font-weight: 600;
+            font-size: 11pt;
+            color: #2d3748;
+        }
+        .project-title a {
+            color: #2b6cb0;
+            text-decoration: none;
+            font-size: 0.8em;
+            margin-left: 5px;
+        }
+        .project-title a:hover {
+            text-decoration: underline;
+            color: #2c5282;
+        }
+
+        .project-description {
+            font-size: 9.5pt;
+            margin-top: 5px;
+            color: #4a5568;
+            line-height: 1.5;
+        }
+
+        .project-tech {
+            font-size: 8.5pt;
+            color: #718096;
+            font-style: italic;
+            margin-top: 6px;
+        }
+
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 8.5pt;
+            color: #718096;
+            margin-top: 40px;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 15px;
+        }
+
+        .projects h4 {
+            font-size: 12pt;
+            font-weight: 600;
+            margin-bottom: 12px;
+            margin-top: 20px;
+            color: #1a202c;
+        }
+        .projects h4:first-of-type {
+            margin-top: 0;
+        }
+
+        @media print {
+            body {
+                background: white;
+                font-size: 10pt;
+                color: #000000;
+                padding: 0; /* Remove body padding for print */
+            }
+            #resume-container {
+                /* No specific styles needed, #resume handles print margins */
+            }
+            #resume {
+                box-shadow: none;
+                margin: 0; /* Let @page margin handle it */
+                padding: 0; /* Let @page margin handle it */
+                border-radius: 0;
+                max-width: 100%; /* Ensure it uses full printable area */
+            }
+            .fab-container { /* Hide FAB container and its contents */
+                display: none !important;
+            }
+            .header, .section-title, .job, .education-item, .project, .footer {
+                border-color: #cccccc;
+            }
+            .name .name-first, .name .name-last, .title, .section-title, .company, .degree, .project-title, .skill-category-title, .contact-info a {
+                color: #000000 !important;
+            }
+            .name .name-last {
+                 color: #1c3d5a !important; /* Ensure updated color for Shaikh is used in print */
+            }
+            .contact-info a {
+                text-decoration: underline !important;
+            }
+            .contact-icon { /* Ensure icons are not overly large in print if they render */
+                max-width: 2em;
+                max-height: 2em;
+            }
+            .skills-grid {
+                 grid-template-columns: 1fr 1fr;
+            }
+            .skill-category {
+                background-color: #f0f0f0;
+                border: 1px solid #dddddd;
+            }
+            .project {
+                background-color: #f9f9f9;
+                border: 1px solid #eeeeee;
+            }
+            /* Ensure the first empty header doesn't take up space */
+            .header:first-child {
+                display: none;
+            }
+            
+            /* PAGE BREAK FIXES */
+            /* Prevent headings from being orphaned at bottom of page */
+            .projects h4 {
+                page-break-after: avoid;
+                break-after: avoid;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Keep project items together */
+            .project {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            
+            /* Keep job entries together */
+            .job {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            
+            /* Keep education items together */
+            .education-item {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            
+            /* Ensure section titles stay with their content */
+            .section-title {
+                page-break-after: avoid;
+                break-after: avoid;
+                orphans: 2;
+                widows: 2;
+            }
+            
+            /* Specific fix for Flutter Applications heading */
+            .projects h4:nth-of-type(2) {
+                page-break-before: auto;
+                break-before: auto;
+                margin-top: 25px;
+            }
+            
+            /* Better control over project sections */
+            .projects {
+                orphans: 2;
+                widows: 2;
+            }
+            
+            /* Ensure minimum lines before page break */
+            p, .job-description, .project-description {
+                orphans: 2;
+                widows: 2;
+            }
+            
+            /* Keep skill categories together */
+            .skill-category {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="resume-container">
+        <div id="resume">
+
+            <div class="header"></div> <div class="header">
+                <div class="name">
+                    <span class="name-first">Aasifhusain</span> <span class="name-last">Shaikh</span>
+                </div>
+                <div class="title">MOBILE APPLICATION DEVELOPER · SOFTWARE ENGINEER</div>
+                <div class="contact-info">
+                    <span class="contact-item">Ahmedabad, Gujarat, India</span><br>
+                    <span class="contact-item"><img class="contact-icon" width="16" height="16" src="https://img.icons8.com/fluency/48/email-open.png" alt="email icon"> <a href="mailto:aasif.inbox@gmail.com">aasif.inbox@gmail.com</a></span> |
+                    <span class="contact-item"><img class="contact-icon" width="16" height="16" src="https://img.icons8.com/fluency/48/phone--v1.png" alt="phone icon"> <a href="tel:+918487841685">+91 84878 41685</a></span><br>
+                    <span class="contact-item"><img class="contact-icon" width="16" height="16" src="https://img.icons8.com/color/480/linkedin.png" alt="linkedin icon"> <a href="https://www.linkedin.com/in/aasif-shaykh" target="_blank">linkedin.com/in/aasif-shaykh</a></span> |
+                    <span class="contact-item"><img class="contact-icon" width="16" height="16" src="https://img.icons8.com/color/48/github.png" alt="github icon"> <a href="https://github.com/aasifshaykh" target="_blank">github.com/aasifshaykh</a>
+                    </span>
+                </div>
+                <div class="quote">"Delivering high-quality, maintainable code in fast-paced environments."</div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Summary</div>
+                <p style="text-align: justify; color: #4a5568;">Results-driven Mobile Application Developer with 5 years of experience in designing, developing, and
+                    optimizing scalable mobile applications. Mastery in Android development using Kotlin, MVVM, and
+                    Clean Architecture, with expertise in Dependency Injection (Hilt), Coroutines, and Jetpack
+                    components. Currently expanding expertise in Flutter-based applications with proficiency in Bloc,
+                    GetX, Provider, and state management. Strong problem-solving skills with a focus on modular
+                    architecture, cross-platform development, and performance optimization. Passionate about delivering
+                    high-quality, maintainable code in fast-paced environments across native and hybrid mobile
+                    platforms.</p>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Work Experience</div>
+
+                <div class="job clearfix">
+                    <div class="company">Communities Heritage Private Limited</div>
+                    <div class="job-duration">Nov. 2024 - Present</div>
+                    <div class="job-title">SENIOR ANDROID DEVELOPER</div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Flutter Migration Lead: Currently converting Android applications to Flutter from
+                                scratch, implementing modern state management patterns using Bloc and Provider.</li>
+                            <li>Legacy Code Refactoring: Upgraded project by transforming codebase into scalable
+                                architecture using Clean Architecture, MVVM, and Hilt.</li>
+                            <li>CRM Development: Enhanced CRM system by implementing new features, optimizing
+                                efficiency, and integrating backend services.</li>
+                            <li>High-Level Optimization: Led key initiatives, optimized performance, integrated Jetpack,
+                                Coroutines, and APIs, driving innovation.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="job clearfix">
+                    <div class="company">Nichetech Computer Solutions Private Limited</div>
+                    <div class="job-duration">July 2022 - Oct. 2024</div>
+                    <div class="job-title">MOBILE APPLICATION DEVELOPER</div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Technical Leadership: Led a team of developers, providing mentorship, conducting code
+                                reviews, and ensuring adherence to coding standards and project timelines.</li>
+                            <li>Flutter Project Development: Worked on various Flutter projects implementing complex
+                                UI/UX designs, state management with Bloc/GetX, and cross-platform solutions.</li>
+                            <li>Advanced App Architecture: Implemented robust architectures using MVVM and Clean
+                                Architecture principles, enhancing application scalability and maintainability.</li>
+                            <li>Project Management: Managed multiple projects simultaneously, coordinated with clients
+                                to define project scopes, and delivered solutions that met or exceeded expectations.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="job clearfix">
+                    <div class="company">3WM Techno Solutions LLP</div>
+                    <div class="job-duration">Jan. 2020 - Dec. 2021</div>
+                    <div class="job-title">ANDROID DEVELOPER</div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Process Automation: Played crucial role in automating company's manual data entry
+                                processes by developing custom Android application, significantly improving productivity
+                                and accuracy.</li>
+                            <li>Foundation Building: Gained strong foundation in Android development, modern best
+                                practices, and automation-driven solutions to enhance business operations.</li>
+                            <li>Operational Efficiency: Reduced operational workload and increased efficiency through
+                                robust Android app development.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Key Projects</div>
+
+                <div class="projects">
+                    <h4 style="font-size: 11pt; margin-bottom: 10px;">ANDROID APPLICATIONS</h4>
+
+                    <div class="project">
+                        <div class="project-title">MyCo
+                            - Your Business App | <a href="https://play.google.com/store/apps/details?id=com.mycompany.fhpl"
+                                target="_blank"> Google Play</a></div>
+                        <div class="project-description">Led the migration of legacy Android applications to Flutter,
+                            implementing modern state management patterns using Bloc and Provider. Refactored codebase into
+                            scalable architecture using Clean Architecture, MVVM, and Hilt.</div>
+                        <div class="project-tech">Technologies: Kotlin, MVVM, Retrofit, Room, Firebase</div>
+                    </div>
+
+                    <div class="project">
+                        <div class="project-title">Prashant Group Calculator | <a
+                                href="https://play.google.com/store/apps/details?id=com.fts.calculator" target="_blank">
+                                Google Play</a></div>
+                        <div class="project-description">Developed a comprehensive calculator application with advanced
+                            mathematical functions, unit conversions, and history tracking. Implemented a user-friendly
+                            interface with adaptive layouts for different screen sizes.</div>
+                        <div class="project-tech">Technologies: Kotlin, Clean Architecture, DataStore, JUnit</div>
+                    </div>
+
+                    <div class="project">
+                        <div class="project-title">Prashant CSP – Customer Support App | <a
+                                href="https://play.google.com/store/apps/details?id=com.prasadcustomerserviceappandroid"
+                                target="_blank"> Google Play</a></div>
+                        <div class="project-description">Developed a customer support application with real-time chat,
+                            ticket management, and user feedback features. Implemented secure user authentication and data
+                            encryption for sensitive information.</div>
+                        <div class="project-tech">Technologies: Kotlin, MVVM, Firebase, Coroutines, LiveData</div>
+                    </div>
+
+                    <div class="project">
+                        <div class="project-title">1Click by PRSSB – Demat Portfolio Management App | <a
+                                href="https://play.google.com/store/apps/details?id=nt.prssb" target="_blank"> Google
+                                Play</a></div>
+                        <div class="project-description">Developed a mobile application enabling users to monitor their
+                            Demat investment portfolios. Implemented real-time data synchronization with backend services
+                            for up-to-date market information.</div>
+                        <div class="project-tech">Technologies: Kotlin, Clean Architecture, Hilt, Retrofit, Room</div>
+                    </div>
+
+                    <div class="project">
+                        <div class="project-title">SIHL MoneyMaker – Trading & Portfolio Management App | <a
+                                href="https://play.google.com/store/apps/details?id=com.saral_info.moneymakerapi.shahinvestor"
+                                target="_blank"> Google Play</a></div>
+                        <div class="project-description">Built a real-time trading app with TradingView charts, 100+
+                            indicators, and drawing tools. Developed tools for OHCL, SMA, and Pivot Calculators across
+                            timeframes.</div>
+                        <div class="project-tech">Technologies: Kotlin, MVVM, WebSockets, Room, Coroutines</div>
+                    </div>
+
+                    <h4 style="font-size: 11pt; margin-bottom: 10px; margin-top: 15px;">FLUTTER APPLICATIONS</h4>
+
+                    <div class="project">
+                        <div class="project-title">Matrubharti Novels and Stories | <a
+                                href="https://play.google.com/store/apps/details?id=com.nichetech.matrubharti"
+                                target="_blank"> Google Play</a></div>
+                        <div class="project-description">Maintained the native Android app for reading and publishing
+                            regional stories and novels. Migrated the app to Flutter using GetX for state management and
+                            routing.</div>
+                        <div class="project-tech">Technologies: Flutter, Bloc, Hive, Firebase</div>
+                    </div>
+
+                    <div class="project">
+                        <div class="project-title">Circle.ooo – Event & Contact Management App | <a
+                                href="https://play.google.com/store/apps/details?id=com.circle.ooo" target="_blank"> Google
+                                Play</a></div>
+                        <div class="project-description">Revamped an incomplete Flutter app by redesigning the UI and
+                            enhancing core functionalities. Implemented an interactive, circular dashboard inspired by Apple
+                            Watch menus for intuitive navigation.</div>
+                        <div class="project-tech">Technologies: Flutter, GetX, Firebase, Cloud Storage</div>
+                    </div>
+
+                    <div class="project">
+                        <div class="project-title">BrightCheck – Personal Safety & Background Check App | <a
+                                href="https://play.google.com/store/apps/details?id=com.brightswipe.app" target="_blank">
+                                Google Play</a></div>
+                        <div class="project-description">Developed the BrightCheck app from scratch using Flutter and GetX,
+                            enabling cross-platform deployment on Android and iOS. Integrated real-time identity
+                            verification and criminal history checks.</div>
+                        <div class="project-tech">Technologies: Flutter, Provider, Firebase, Firestore</div>
+                    </div>
+
+                    <h4 style="font-size: 11pt; margin-bottom: 10px; margin-top: 15px;">REACT NATIVE APPLICATIONS</h4>
+
+                    <div class="project">
+                        <div class="project-title">Rater – Anti-Catfishing Dating App | <a
+                                href="https://play.google.com/store/apps/details?id=com.raterdate" target="_blank"> Google
+                                Play</a></div>
+                        <div class="project-description">Contributed to the development of Rater, a dating app focused on
+                            user authenticity and safety, utilizing React Native for cross-platform compatibility.
+                            Implemented features such as AI and human-verified profiles.</div>
+                        <div class="project-tech">Technologies: React Native, Redux, Firebase, Node.js</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Technical Skills</div>
+                <div class="skills-grid">
+                    <div>
+                        <div class="skill-category">
+                            <div class="skill-category-title">Android Development:</div>
+                            <div class="skill-list">Kotlin, Java, MVVM, Clean Architecture, Dagger/Hilt, Jetpack
+                                Compose, Coroutines, Flow, LiveData, Jetpack Components</div>
+                        </div>
+                        <div class="skill-category">
+                            <div class="skill-category-title">Flutter Development:</div>
+                            <div class="skill-list">Dart, Bloc, GetX, Provider, GetIt DI, Riverpod, Cubit, Flutter
+                                Widgets, State Management</div>
+                        </div>
+                        <div class="skill-category">
+                            <div class="skill-category-title">Cross-Platform:</div>
+                            <div class="skill-list">React Native, Redux, Expo</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="skill-category">
+                            <div class="skill-category-title">Backend & APIs:</div>
+                            <div class="skill-list">RESTful APIs, Retrofit, Firebase, Node.js, WebSockets</div>
+                        </div>
+                        <div class="skill-category">
+                            <div class="skill-category-title">Database & Storage:</div>
+                            <div class="skill-list">SQLite, Room, DataStore, Hive, Firestore, Cloud Storage</div>
+                        </div>
+                        <div class="skill-category">
+                            <div class="skill-category-title">Tools & Others:</div>
+                            <div class="skill-list">Git, CI/CD, Unit Testing, UI Testing, Google Play Console,
+                                Third-Party Libraries</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Education</div>
+
+                <!-- <div class="education-item clearfix">
+                    <div class="institution">Silver Oak Institute of Engineering & Technology (GTU Affiliated)</div>
+                    <div class="education-duration">July 2018 - March 2022</div>
+                    <div class="degree">B.E. IN COMPUTER ENGINEERING</div>
+                    <div style="font-size: 9pt; margin-top: 3px; color: #718096;">Ahmedabad, Gujarat, India</div>
+                </div> -->
+
+                <div class="education-item clearfix">
+                    <div class="institution">F.D (Mubin) Institute of Engineering & Technology (GTU Affiliated)</div>
+                    <div class="education-duration">July 2014 - March 2018</div>
+                    <div class="degree">DIPLOMA IN COMPUTER ENGINEERING</div>
+                    <div style="font-size: 9pt; margin-top: 3px; color: #718096;">Ahmedabad, Gujarat, India</div>
+                </div>
+            </div>
+
+            <div class="footer">
+                AASIFHUSAIN SHAIKH · RÉSUMÉ
+            </div>
+        </div> </div> <div class="fab-container">
+        <div class="fab fab-download" onclick="window.print()" title="Download PDF (Use 'Save as PDF' in print dialog)">
+            </div>
+    </div>
+
+</body>
+</html>
